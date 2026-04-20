@@ -1,0 +1,918 @@
+2026-04-18 14:17:32 | ERROR    | __main__:main:146 - File not found: data/OJ_L_202401689_EN_TXT.pdf
+2026-04-18 14:17:57 | INFO     | __main__:ingest_document:36 - Starting document ingestion: ./OJ_L_202401689_EN_TXT.pdf
+2026-04-18 14:17:57 | INFO     | __main__:ingest_document:43 - Parsing document...
+2026-04-18 14:17:57 | INFO     | src.ingestion.parser:__init__:34 - Initialized parser for PDF: ./OJ_L_202401689_EN_TXT.pdf
+2026-04-18 14:17:57 | INFO     | src.ingestion.parser:_parse_pdf:102 - Starting PDF parsing...
+2026-04-18 14:17:57 | INFO     | src.ingestion.parser:_parse_pdf:106 - Extracted text from 144 pages
+2026-04-18 14:17:57 | INFO     | src.ingestion.parser:_parse_pdf:110 - Detected 461 sections
+2026-04-18 14:17:57 | INFO     | __main__:ingest_document:46 - Parsed 461 sections
+2026-04-18 14:17:57 | INFO     | __main__:ingest_document:52 - Saved parsed documents to: data/processed/parsed_documents.json
+2026-04-18 14:17:57 | INFO     | __main__:ingest_document:55 - Creating chunks...
+2026-04-18 14:18:18 | INFO     | src.ingestion.chunker:__init__:46 - Initialized chunker: strategy=semantic, size=512, overlap=50
+2026-04-18 14:18:18 | INFO     | src.ingestion.chunker:chunk_documents:58 - Chunking 461 documents using semantic strategy...
+2026-04-18 14:18:18 | INFO     | src.ingestion.chunker:chunk_documents:71 - Created 561 chunks
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:76 - Created 561 chunks
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:82 - Saved chunks to: data/processed/chunks.json
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:107 - Saved statistics to: data/processed/ingestion_stats.json
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:110 - 
+============================================================
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:111 - INGESTION SUMMARY
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:112 - ============================================================
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:113 - Total Documents: 461
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:114 - Total Chunks: 561
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:115 - Average Chunk Size: 1082 characters
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:116 - 
+Documents by Type:
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:118 -   recital: 287
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:118 -   annex: 18
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:118 -   article: 143
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:118 -   chapter: 13
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:119 - 
+Chunks by Type:
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:121 -   unknown: 561
+2026-04-18 14:18:18 | INFO     | __main__:ingest_document:122 - ============================================================
+2026-04-18 14:18:18 | INFO     | __main__:main:151 - 
+✅ Document ingestion completed successfully!
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:73 - ================================================================================
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:74 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:75 - ================================================================================
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:81 - Model: text-embedding-3-large
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:82 - Batch size: 100
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:85 - 
+[1/4] Loading chunks...
+2026-04-18 14:22:53 | INFO     | __main__:load_chunks_from_json:34 - Loading chunks from: data/processed/chunks.json
+2026-04-18 14:22:53 | INFO     | __main__:load_chunks_from_json:51 - ✓ Loaded 561 chunks
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:92 -   - Average tokens: 246
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:93 -   - Min tokens: 6
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:94 -   - Max tokens: 512
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:100 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:103 - 
+[2/4] Initializing embedding generator...
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:__init__:41 - Initializing EmbeddingGenerator with model: text-embedding-3-large
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:__init__:42 - Model dimensions: 3072
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:__init__:43 - Batch size: 100
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:108 - ✓ Initialized with model: text-embedding-3-large
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:111 - 
+[3/4] Generating embeddings...
+2026-04-18 14:22:53 | INFO     | __main__:build_embeddings:112 -   This may take a few minutes for 561 chunks...
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:generate_embeddings:74 - Generating embeddings for 561 texts...
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:generate_embeddings:80 - Estimated tokens: 140,227
+2026-04-18 14:22:53 | INFO     | src.embeddings.generator:generate_embeddings:81 - Estimated cost: $0.0182
+2026-04-18 14:22:54 | ERROR    | src.embeddings.generator:_generate_openai_batch:130 - Error generating OpenAI embeddings: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-svcac***********************************************************************************************************************************************************rjsA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-04-18 14:22:54 | ERROR    | __main__:<module>:204 - 
+❌ Error building embeddings: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-svcac***********************************************************************************************************************************************************rjsA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:73 - ================================================================================
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:74 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:75 - ================================================================================
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:81 - Model: text-embedding-3-large
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:82 - Batch size: 100
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:85 - 
+[1/4] Loading chunks...
+2026-04-18 14:25:41 | INFO     | __main__:load_chunks_from_json:34 - Loading chunks from: data/processed/chunks.json
+2026-04-18 14:25:41 | INFO     | __main__:load_chunks_from_json:51 - ✓ Loaded 561 chunks
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:92 -   - Average tokens: 246
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:93 -   - Min tokens: 6
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:94 -   - Max tokens: 512
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:100 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:103 - 
+[2/4] Initializing embedding generator...
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:__init__:41 - Initializing EmbeddingGenerator with model: text-embedding-3-large
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:__init__:42 - Model dimensions: 3072
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:__init__:43 - Batch size: 100
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:108 - ✓ Initialized with model: text-embedding-3-large
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:111 - 
+[3/4] Generating embeddings...
+2026-04-18 14:25:41 | INFO     | __main__:build_embeddings:112 -   This may take a few minutes for 561 chunks...
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:generate_embeddings:74 - Generating embeddings for 561 texts...
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:generate_embeddings:80 - Estimated tokens: 140,227
+2026-04-18 14:25:41 | INFO     | src.embeddings.generator:generate_embeddings:81 - Estimated cost: $0.0182
+2026-04-18 14:25:44 | ERROR    | src.embeddings.generator:_generate_openai_batch:130 - Error generating OpenAI embeddings: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-04-18 14:25:44 | ERROR    | __main__:<module>:204 - 
+❌ Error building embeddings: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:73 - ================================================================================
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:74 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:75 - ================================================================================
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:81 - Model: text-embedding-3-large
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:82 - Batch size: 100
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:85 - 
+[1/4] Loading chunks...
+2026-04-18 14:30:30 | INFO     | __main__:load_chunks_from_json:34 - Loading chunks from: data/processed/chunks.json
+2026-04-18 14:30:30 | INFO     | __main__:load_chunks_from_json:51 - ✓ Loaded 561 chunks
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:92 -   - Average tokens: 246
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:93 -   - Min tokens: 6
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:94 -   - Max tokens: 512
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:100 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:103 - 
+[2/4] Initializing embedding generator...
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:__init__:41 - Initializing EmbeddingGenerator with model: text-embedding-3-large
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:__init__:42 - Model dimensions: 3072
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:__init__:43 - Batch size: 100
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:108 - ✓ Initialized with model: text-embedding-3-large
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:111 - 
+[3/4] Generating embeddings...
+2026-04-18 14:30:30 | INFO     | __main__:build_embeddings:112 -   This may take a few minutes for 561 chunks...
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:generate_embeddings:74 - Generating embeddings for 561 texts...
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:generate_embeddings:80 - Estimated tokens: 140,227
+2026-04-18 14:30:30 | INFO     | src.embeddings.generator:generate_embeddings:81 - Estimated cost: $0.0182
+2026-04-18 14:30:34 | ERROR    | src.embeddings.generator:_generate_openai_batch:130 - Error generating OpenAI embeddings: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-5678i*******************************ijkl. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-04-18 14:30:34 | ERROR    | __main__:<module>:204 - 
+❌ Error building embeddings: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-5678i*******************************ijkl. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:73 - ================================================================================
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:74 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:75 - ================================================================================
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:81 - Model: text-embedding-3-large
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:82 - Batch size: 100
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:85 - 
+[1/4] Loading chunks...
+2026-04-18 15:00:16 | INFO     | __main__:load_chunks_from_json:34 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:00:16 | INFO     | __main__:load_chunks_from_json:51 - ✓ Loaded 561 chunks
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:92 -   - Average tokens: 246
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:93 -   - Min tokens: 6
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:94 -   - Max tokens: 512
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:100 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:103 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:00:16 | INFO     | __main__:build_embeddings:104 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:00:16 | ERROR    | __main__:<module>:207 - 
+❌ Error building embeddings: No embedding provider available. Please configure OpenAI, WatsonX, or Ollama.
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:02:20 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:02:20 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:02:20 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:02:24 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: No embedding provider available. Please configure OpenAI, WatsonX, or Ollama.
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:02:40 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:02:40 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:02:40 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:02:41 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: No embedding provider available. Please configure OpenAI, WatsonX, or Ollama.
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:06:22 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:06:22 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:06:22 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:06:23 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: No embedding provider available. Please configure OpenAI, WatsonX, or Ollama.
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:08:36 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:08:36 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:08:36 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:08:38 | INFO     | __main__:build_embeddings:115 - ✓ Initialized with provider: watsonx, model: ibm/granite-embedding-278m-multilingual
+2026-04-18 15:08:38 | INFO     | __main__:build_embeddings:118 - 
+[3/4] Generating embeddings...
+2026-04-18 15:08:38 | INFO     | __main__:build_embeddings:119 -   This may take a few minutes for 561 chunks...
+2026-04-18 15:08:39 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: Failure during generate. (POST https://us-south.ml.cloud.ibm.com/ml/v1/text/embeddings?version=2025-10-08)
+Status code: 400, body: {"errors":[{"code":"invalid_input_argument","message":"Invalid input argument for Model 'ibm/granite-embedding-278m-multilingual': This model's maximum context length is 512 tokens. However, you requested 535 tokens in the input for embedding generation. Please reduce the length of the input.","more_info":"https://cloud.ibm.com/apidocs/watsonx-ai#text-embeddings"}],"trace":"f4e5e90c626fe4e9dab8305ffc14b791","status_code":400}
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:09:12 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:09:12 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:09:12 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:09:13 | INFO     | __main__:build_embeddings:115 - ✓ Initialized with provider: watsonx, model: ibm/granite-embedding-278m-multilingual
+2026-04-18 15:09:13 | INFO     | __main__:build_embeddings:118 - 
+[3/4] Generating embeddings...
+2026-04-18 15:09:13 | INFO     | __main__:build_embeddings:119 -   This may take a few minutes for 561 chunks...
+2026-04-18 15:09:14 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: Failure during generate. (POST https://us-south.ml.cloud.ibm.com/ml/v1/text/embeddings?version=2025-10-08)
+Status code: 400, body: {"errors":[{"code":"invalid_input_argument","message":"Invalid input argument for Model 'ibm/granite-embedding-278m-multilingual': This model's maximum context length is 512 tokens. However, you requested 535 tokens in the input for embedding generation. Please reduce the length of the input.","more_info":"https://cloud.ibm.com/apidocs/watsonx-ai#text-embeddings"}],"trace":"24b41f8b28fbb9b832562fd3018b7f9c","status_code":400}
+2026-04-18 15:10:12 | ERROR    | __main__:main:146 - File not found: data/raw/EU_AI_Act.pdf
+2026-04-18 15:10:40 | INFO     | __main__:ingest_document:36 - Starting document ingestion: OJ_L_202401689_EN_TXT.pdf
+2026-04-18 15:10:40 | INFO     | __main__:ingest_document:43 - Parsing document...
+2026-04-18 15:10:40 | INFO     | src.ingestion.parser:__init__:34 - Initialized parser for PDF: OJ_L_202401689_EN_TXT.pdf
+2026-04-18 15:10:40 | INFO     | src.ingestion.parser:_parse_pdf:102 - Starting PDF parsing...
+2026-04-18 15:10:41 | INFO     | src.ingestion.parser:_parse_pdf:106 - Extracted text from 144 pages
+2026-04-18 15:10:41 | INFO     | src.ingestion.parser:_parse_pdf:110 - Detected 461 sections
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:46 - Parsed 461 sections
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:52 - Saved parsed documents to: data/processed/parsed_documents.json
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:55 - Creating chunks...
+2026-04-18 15:10:41 | INFO     | src.ingestion.chunker:__init__:46 - Initialized chunker: strategy=semantic, size=512, overlap=50
+2026-04-18 15:10:41 | INFO     | src.ingestion.chunker:chunk_documents:58 - Chunking 461 documents using semantic strategy...
+2026-04-18 15:10:41 | INFO     | src.ingestion.chunker:chunk_documents:71 - Created 561 chunks
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:76 - Created 561 chunks
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:82 - Saved chunks to: data/processed/chunks.json
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:107 - Saved statistics to: data/processed/ingestion_stats.json
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:110 - 
+============================================================
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:111 - INGESTION SUMMARY
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:112 - ============================================================
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:113 - Total Documents: 461
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:114 - Total Chunks: 561
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:115 - Average Chunk Size: 1082 characters
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:116 - 
+Documents by Type:
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:118 -   recital: 287
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:118 -   annex: 18
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:118 -   article: 143
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:118 -   chapter: 13
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:119 - 
+Chunks by Type:
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:121 -   unknown: 561
+2026-04-18 15:10:41 | INFO     | __main__:ingest_document:122 - ============================================================
+2026-04-18 15:10:41 | INFO     | __main__:main:151 - 
+✅ Document ingestion completed successfully!
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:12:08 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:12:08 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:12:08 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:12:10 | INFO     | __main__:build_embeddings:115 - ✓ Initialized with provider: watsonx, model: ibm/granite-embedding-278m-multilingual
+2026-04-18 15:12:10 | INFO     | __main__:build_embeddings:118 - 
+[3/4] Generating embeddings...
+2026-04-18 15:12:10 | INFO     | __main__:build_embeddings:119 -   This may take a few minutes for 561 chunks...
+2026-04-18 15:12:11 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: Failure during generate. (POST https://us-south.ml.cloud.ibm.com/ml/v1/text/embeddings?version=2025-10-08)
+Status code: 400, body: {"errors":[{"code":"invalid_input_argument","message":"Invalid input argument for Model 'ibm/granite-embedding-278m-multilingual': This model's maximum context length is 512 tokens. However, you requested 551 tokens in the input for embedding generation. Please reduce the length of the input.","more_info":"https://cloud.ibm.com/apidocs/watsonx-ai#text-embeddings"}],"trace":"82a686372d0357b1ef705667a54eb39f","status_code":400}
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:12:33 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:12:33 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:12:33 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:12:34 | INFO     | __main__:build_embeddings:115 - ✓ Initialized with provider: watsonx, model: ibm/granite-embedding-278m-multilingual
+2026-04-18 15:12:34 | INFO     | __main__:build_embeddings:118 - 
+[3/4] Generating embeddings...
+2026-04-18 15:12:34 | INFO     | __main__:build_embeddings:119 -   This may take a few minutes for 561 chunks...
+2026-04-18 15:12:52 | ERROR    | __main__:<module>:211 - 
+❌ Error building embeddings: Failure during generate. (POST https://us-south.ml.cloud.ibm.com/ml/v1/text/embeddings?version=2025-10-08)
+Status code: 400, body: {"errors":[{"code":"invalid_input_argument","message":"Invalid input argument for Model 'ibm/granite-embedding-278m-multilingual': This model's maximum context length is 512 tokens. However, you requested 551 tokens in the input for embedding generation. Please reduce the length of the input.","more_info":"https://cloud.ibm.com/apidocs/watsonx-ai#text-embeddings"}],"trace":"a29967beb42221d48803ba9f3cda21dc","status_code":400}
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:77 - ================================================================================
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:78 - BUILDING EMBEDDINGS AND FAISS INDEX
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:79 - ================================================================================
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:85 - Model: text-embedding-3-large
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:86 - Batch size: 100
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:89 - 
+[1/4] Loading chunks...
+2026-04-18 15:13:17 | INFO     | __main__:load_chunks_from_json:38 - Loading chunks from: data/processed/chunks.json
+2026-04-18 15:13:17 | INFO     | __main__:load_chunks_from_json:55 - ✓ Loaded 561 chunks
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:96 -   - Average tokens: 246
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:97 -   - Min tokens: 6
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:98 -   - Max tokens: 512
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:104 - ✓ Saved chunks to: data/indexes/chunks.pkl
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:107 - 
+[2/4] Initializing multi-provider embedding generator...
+2026-04-18 15:13:17 | INFO     | __main__:build_embeddings:108 - Trying providers in order: OpenAI → WatsonX AI → Ollama
+2026-04-18 15:13:18 | INFO     | __main__:build_embeddings:115 - ✓ Initialized with provider: watsonx, model: ibm/granite-embedding-278m-multilingual
+2026-04-18 15:13:18 | INFO     | __main__:build_embeddings:118 - 
+[3/4] Generating embeddings...
+2026-04-18 15:13:18 | INFO     | __main__:build_embeddings:119 -   This may take a few minutes for 561 chunks...
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:122 - ✓ Generated embeddings: (561, 768)
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:136 - ✓ Saved embeddings to: data/indexes/embeddings.pkl
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:139 - 
+[4/4] Building FAISS index...
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:143 -   Index type: IndexHNSWFlat
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:150 - ✓ Saved FAISS index to: data/indexes/faiss_index.bin
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:153 - 
+================================================================================
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:154 - BUILD COMPLETE
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:155 - ================================================================================
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:156 - Chunks: 561
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:157 - Embeddings: (561, 768)
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:158 - Index vectors: 561
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:159 - 
+Output files:
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:160 -   - data/indexes/chunks.pkl
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:161 -   - data/indexes/embeddings.pkl
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:162 -   - data/indexes/faiss_index.bin
+2026-04-18 15:17:48 | INFO     | __main__:build_embeddings:163 - ================================================================================
+2026-04-18 15:17:48 | INFO     | __main__:<module>:208 - 
+✅ Embeddings and index built successfully!
+2026-04-18 15:23:19 | INFO     | __main__:test_retrieval:35 - Loading chunks...
+2026-04-18 15:23:19 | INFO     | __main__:test_retrieval:39 - Loaded 561 chunks
+2026-04-18 15:23:19 | INFO     | __main__:test_retrieval:42 - Initializing embedding generator...
+2026-04-18 15:23:19 | ERROR    | __main__:test_retrieval:97 - Error during retrieval test: No embedding provider available. Please configure OpenAI, WatsonX, or Ollama.
+2026-04-18 15:23:33 | INFO     | __main__:test_retrieval:39 - Loading chunks...
+2026-04-18 15:23:33 | INFO     | __main__:test_retrieval:43 - Loaded 561 chunks
+2026-04-18 15:23:33 | INFO     | __main__:test_retrieval:46 - Initializing embedding generator...
+2026-04-18 15:23:36 | INFO     | __main__:test_retrieval:50 - Loading FAISS index...
+2026-04-18 15:23:36 | INFO     | __main__:test_retrieval:53 - Loaded FAISS index with 561 vectors
+2026-04-18 15:23:36 | INFO     | __main__:test_retrieval:56 - Initializing dense retriever...
+2026-04-18 15:23:36 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:23:36 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:23:36 | INFO     | __main__:test_retrieval:64 - Initializing sparse retriever...
+2026-04-18 15:23:36 | ERROR    | __main__:test_retrieval:101 - Error during retrieval test: 'NoneType' object has no attribute 'bm25_k1'
+2026-04-18 15:23:52 | INFO     | __main__:test_retrieval:39 - Loading chunks...
+2026-04-18 15:23:52 | INFO     | __main__:test_retrieval:43 - Loaded 561 chunks
+2026-04-18 15:23:52 | INFO     | __main__:test_retrieval:46 - Initializing embedding generator...
+2026-04-18 15:23:53 | INFO     | __main__:test_retrieval:50 - Loading FAISS index...
+2026-04-18 15:23:53 | INFO     | __main__:test_retrieval:53 - Loaded FAISS index with 561 vectors
+2026-04-18 15:23:53 | INFO     | __main__:test_retrieval:56 - Initializing dense retriever...
+2026-04-18 15:23:53 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:23:53 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:23:53 | INFO     | __main__:test_retrieval:64 - Initializing sparse retriever...
+2026-04-18 15:23:53 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 15:23:53 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 15:23:53 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 15:23:53 | INFO     | __main__:test_retrieval:72 - Initializing hybrid retriever...
+2026-04-18 15:23:53 | ERROR    | __main__:test_retrieval:106 - Error during retrieval test: 'NoneType' object has no attribute 'alpha'
+2026-04-18 15:24:07 | INFO     | __main__:test_retrieval:39 - Loading chunks...
+2026-04-18 15:24:07 | INFO     | __main__:test_retrieval:43 - Loaded 561 chunks
+2026-04-18 15:24:07 | INFO     | __main__:test_retrieval:46 - Initializing embedding generator...
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:50 - Loading FAISS index...
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:53 - Loaded FAISS index with 561 vectors
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:56 - Initializing dense retriever...
+2026-04-18 15:24:09 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:24:09 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:64 - Initializing sparse retriever...
+2026-04-18 15:24:09 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 15:24:09 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 15:24:09 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:72 - Initializing hybrid retriever...
+2026-04-18 15:24:09 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 15:24:09 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 15:24:09 | INFO     | __main__:test_retrieval:82 - Retrieving relevant documents...
+2026-04-18 15:24:09 | ERROR    | __main__:test_retrieval:107 - Error during retrieval test: 'NoneType' object has no attribute 'dense_top_k'
+2026-04-18 15:24:25 | INFO     | __main__:test_retrieval:39 - Loading chunks...
+2026-04-18 15:24:25 | INFO     | __main__:test_retrieval:43 - Loaded 561 chunks
+2026-04-18 15:24:25 | INFO     | __main__:test_retrieval:46 - Initializing embedding generator...
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:50 - Loading FAISS index...
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:53 - Loaded FAISS index with 561 vectors
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:56 - Initializing dense retriever...
+2026-04-18 15:24:26 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:24:26 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:64 - Initializing sparse retriever...
+2026-04-18 15:24:26 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 15:24:26 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 15:24:26 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:72 - Initializing hybrid retriever...
+2026-04-18 15:24:26 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 15:24:26 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 15:24:26 | INFO     | __main__:test_retrieval:82 - Retrieving relevant documents...
+2026-04-18 15:24:26 | ERROR    | __main__:test_retrieval:112 - Error during retrieval test: 'NoneType' object has no attribute 'dense_weight'
+2026-04-18 15:24:53 | INFO     | __main__:test_retrieval:39 - Loading chunks...
+2026-04-18 15:24:53 | INFO     | __main__:test_retrieval:43 - Loaded 561 chunks
+2026-04-18 15:24:53 | INFO     | __main__:test_retrieval:46 - Initializing embedding generator...
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:50 - Loading FAISS index...
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:53 - Loaded FAISS index with 561 vectors
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:56 - Initializing dense retriever...
+2026-04-18 15:24:54 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:24:54 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:64 - Initializing sparse retriever...
+2026-04-18 15:24:54 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 15:24:54 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 15:24:54 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:72 - Initializing hybrid retriever...
+2026-04-18 15:24:54 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 15:24:54 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 15:24:54 | INFO     | __main__:test_retrieval:82 - Retrieving relevant documents...
+2026-04-18 15:35:15 | INFO     | __main__:initialize_system:63 - Initializing RAG system...
+2026-04-18 15:35:15 | INFO     | __main__:initialize_system:66 - Loading chunks...
+2026-04-18 15:35:15 | INFO     | __main__:initialize_system:70 - Loaded 561 chunks
+2026-04-18 15:35:15 | INFO     | __main__:initialize_system:73 - Initializing embedding generator...
+2026-04-18 15:35:17 | INFO     | __main__:initialize_system:77 - Loading FAISS index...
+2026-04-18 15:35:17 | INFO     | __main__:initialize_system:80 - Loaded FAISS index with 561 vectors
+2026-04-18 15:35:17 | INFO     | __main__:initialize_system:83 - Initializing dense retriever...
+2026-04-18 15:35:17 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 15:35:17 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 15:35:17 | INFO     | __main__:initialize_system:91 - Initializing sparse retriever...
+2026-04-18 15:35:17 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 15:35:17 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 15:35:18 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 15:35:18 | INFO     | __main__:initialize_system:99 - Initializing hybrid retriever...
+2026-04-18 15:35:18 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 15:35:18 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:07:00 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:07:04 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:07:04 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:07:04 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:07:04 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:07:04 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:07:04 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:07:04 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:07:24 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:07:26 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:07:26 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:07:26 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:07:26 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:07:26 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:07:26 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:07:26 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:08:13 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:08:15 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:08:15 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:08:15 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:08:15 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:08:15 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:08:15 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:08:15 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:08:58 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:08:59 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:08:59 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:08:59 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:08:59 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:08:59 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:08:59 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:08:59 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:08:59 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:09:01 | INFO     | __main__:__init__:85 - ✓ Loaded 561 chunks
+2026-04-18 20:09:01 | INFO     | __main__:__init__:86 - ✓ FAISS index: 561 vectors
+2026-04-18 20:09:01 | INFO     | __main__:__init__:87 - ✓ All components initialized
+2026-04-18 20:11:04 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:11:06 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:11:06 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:11:06 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:11:06 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:11:06 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:11:06 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:11:06 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:11:06 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:11:06 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:11:06 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:11:06 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:11:08 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:11:08 | INFO     | __main__:__init__:71 - ✓ LLM Provider: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:11:08 | INFO     | __main__:__init__:75 - ✓ Loaded 561 chunks
+2026-04-18 20:11:08 | INFO     | __main__:__init__:76 - ✓ FAISS index: 561 vectors
+2026-04-18 20:11:08 | INFO     | __main__:__init__:77 - ✓ All components initialized
+2026-04-18 20:12:09 | INFO     | __main__:__init__:38 - Initializing Live Evaluator...
+2026-04-18 20:12:11 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:12:11 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:12:11 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:12:11 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:12:11 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:12:11 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:12:11 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:12:11 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:12:11 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:12:11 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:12:11 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:12:12 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:12:12 | INFO     | __main__:__init__:71 - ✓ LLM Provider: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:12:12 | INFO     | __main__:__init__:75 - ✓ Loaded 561 chunks
+2026-04-18 20:12:12 | INFO     | __main__:__init__:76 - ✓ FAISS index: 561 vectors
+2026-04-18 20:12:12 | INFO     | __main__:__init__:77 - ✓ All components initialized
+2026-04-18 20:12:12 | INFO     | __main__:process_query:90 - 
+Processing: What are the prohibited AI practices under the EU AI Act?
+2026-04-18 20:16:50 | INFO     | __main__:__init__:31 - Initializing Live Evaluator...
+2026-04-18 20:16:52 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:16:52 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:16:52 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:16:52 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:16:52 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:16:52 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:16:52 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:16:52 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:16:52 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:16:52 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:16:52 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:16:53 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:16:53 | INFO     | __main__:__init__:67 - ✓ LLM: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:16:53 | INFO     | __main__:__init__:68 - ✓ Loaded 561 chunks, 561 vectors
+2026-04-18 20:16:53 | INFO     | __main__:process_query:73 - 
+Processing: What are the prohibited AI practices?
+2026-04-18 20:17:11 | INFO     | __main__:__init__:31 - Initializing Live Evaluator...
+2026-04-18 20:17:12 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:17:12 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:17:12 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:17:12 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:17:12 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:17:12 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:17:12 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:17:12 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:17:12 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:17:12 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:17:12 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:17:15 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:17:15 | INFO     | __main__:__init__:67 - ✓ LLM: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:17:15 | INFO     | __main__:__init__:68 - ✓ Loaded 561 chunks, 561 vectors
+2026-04-18 20:17:15 | INFO     | __main__:process_query:73 - 
+Processing: What are the prohibited AI practices?
+2026-04-18 20:17:23 | INFO     | __main__:process_query:150 - ✓ Processed in 8101.43ms
+2026-04-18 20:17:23 | INFO     | __main__:process_query:153 -   Avg Retrieval Score: 0.0215
+2026-04-18 20:17:23 | INFO     | __main__:generate_report:255 - ✓ Excel report generated: results/live_evaluation_20260418_201723.xlsx
+2026-04-18 20:21:38 | INFO     | __main__:__init__:31 - Initializing Live Evaluator...
+2026-04-18 20:21:39 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:21:39 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:21:39 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:21:39 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:21:39 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:21:39 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:21:39 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:21:39 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:21:39 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:21:39 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:21:39 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:21:41 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:21:41 | INFO     | __main__:__init__:74 - ✓ LLM: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:21:41 | INFO     | __main__:__init__:75 - ✓ Loaded 561 chunks, 561 vectors
+2026-04-18 20:21:41 | INFO     | __main__:process_query:80 - 
+Processing: What is the definition of an AI system?
+2026-04-18 20:21:49 | INFO     | __main__:process_query:158 - ✓ Processed in 7577.11ms
+2026-04-18 20:21:49 | INFO     | __main__:process_query:161 -   Avg Retrieval Score: 0.0188
+2026-04-18 20:21:49 | INFO     | __main__:generate_report:264 - ✓ Excel report generated: results/live_evaluation_20260418_202149.xlsx
+2026-04-18 20:55:40 | INFO     | __main__:__init__:33 - Initializing Live Evaluator...
+2026-04-18 20:55:43 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 20:55:43 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 20:55:43 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 20:55:43 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 20:55:43 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 20:55:43 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 20:55:43 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 20:55:43 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 20:55:43 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 20:55:43 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 20:55:43 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 20:55:44 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 20:55:44 | INFO     | __main__:__init__:76 - ✓ LLM: watsonx (openai/gpt-oss-120b)
+2026-04-18 20:55:44 | INFO     | __main__:__init__:77 - ✓ Loaded 561 chunks, 561 vectors
+2026-04-18 20:55:44 | INFO     | src.evaluation.ground_truth:__init__:69 - No ground truth file found, initializing with default queries
+2026-04-18 20:55:44 | INFO     | src.evaluation.ground_truth:_initialize_default_queries:271 - Initialized 20 default test queries
+2026-04-18 20:55:44 | INFO     | __main__:process_query:97 - 
+Processing: What is the definition of an AI system according to the EU AI Act?
+2026-04-18 20:55:53 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:55:53 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:55:53 | INFO     | __main__:process_query:179 - ✓ Processed in 8377.32ms
+2026-04-18 20:55:53 | INFO     | __main__:process_query:181 -   Token F1: 0.3452
+2026-04-18 20:55:53 | INFO     | __main__:process_query:182 -   BLEU: 0.0185
+2026-04-18 20:55:53 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:55:53 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0221
+2026-04-18 20:55:53 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8900
+2026-04-18 20:55:53 | INFO     | __main__:process_query:97 - 
+Processing: What are the prohibited AI practices under the EU AI Act?
+2026-04-18 20:55:56 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:55:56 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:55:56 | INFO     | __main__:process_query:179 - ✓ Processed in 3226.60ms
+2026-04-18 20:55:56 | INFO     | __main__:process_query:181 -   Token F1: 0.1121
+2026-04-18 20:55:56 | INFO     | __main__:process_query:182 -   BLEU: 0.0047
+2026-04-18 20:55:56 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:55:56 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0201
+2026-04-18 20:55:56 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9333
+2026-04-18 20:55:56 | INFO     | __main__:process_query:97 - 
+Processing: Which AI systems are classified as high-risk?
+2026-04-18 20:56:03 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:03 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:03 | INFO     | __main__:process_query:179 - ✓ Processed in 6991.19ms
+2026-04-18 20:56:03 | INFO     | __main__:process_query:181 -   Token F1: 0.0685
+2026-04-18 20:56:03 | INFO     | __main__:process_query:182 -   BLEU: 0.0022
+2026-04-18 20:56:03 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:03 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0239
+2026-04-18 20:56:03 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9400
+2026-04-18 20:56:03 | INFO     | __main__:process_query:97 - 
+Processing: What are the transparency obligations for AI systems?
+2026-04-18 20:56:10 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:10 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:10 | INFO     | __main__:process_query:179 - ✓ Processed in 7132.30ms
+2026-04-18 20:56:10 | INFO     | __main__:process_query:181 -   Token F1: 0.1143
+2026-04-18 20:56:10 | INFO     | __main__:process_query:182 -   BLEU: 0.0023
+2026-04-18 20:56:10 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:10 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0259
+2026-04-18 20:56:10 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8650
+2026-04-18 20:56:10 | INFO     | __main__:process_query:97 - 
+Processing: What is the role of the AI Office?
+2026-04-18 20:56:13 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:13 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:13 | INFO     | __main__:process_query:179 - ✓ Processed in 3330.79ms
+2026-04-18 20:56:13 | INFO     | __main__:process_query:181 -   Token F1: 0.1607
+2026-04-18 20:56:13 | INFO     | __main__:process_query:182 -   BLEU: 0.0164
+2026-04-18 20:56:13 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:13 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0186
+2026-04-18 20:56:13 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9143
+2026-04-18 20:56:13 | INFO     | __main__:process_query:97 - 
+Processing: Explain the risk-based approach of the EU AI Act
+2026-04-18 20:56:22 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:22 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:22 | INFO     | __main__:process_query:179 - ✓ Processed in 8029.69ms
+2026-04-18 20:56:22 | INFO     | __main__:process_query:181 -   Token F1: 0.1106
+2026-04-18 20:56:22 | INFO     | __main__:process_query:182 -   BLEU: 0.0097
+2026-04-18 20:56:22 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:22 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 20:56:22 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9025
+2026-04-18 20:56:22 | INFO     | __main__:process_query:97 - 
+Processing: What is the purpose of conformity assessments for high-risk AI systems?
+2026-04-18 20:56:26 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:26 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:26 | INFO     | __main__:process_query:179 - ✓ Processed in 4056.31ms
+2026-04-18 20:56:26 | INFO     | __main__:process_query:181 -   Token F1: 0.1901
+2026-04-18 20:56:26 | INFO     | __main__:process_query:182 -   BLEU: 0.0301
+2026-04-18 20:56:26 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:26 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0195
+2026-04-18 20:56:26 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9182
+2026-04-18 20:56:26 | INFO     | __main__:process_query:97 - 
+Processing: How does the EU AI Act address fundamental rights?
+2026-04-18 20:56:28 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:28 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:28 | INFO     | __main__:process_query:179 - ✓ Processed in 2595.66ms
+2026-04-18 20:56:28 | INFO     | __main__:process_query:181 -   Token F1: 0.2152
+2026-04-18 20:56:28 | INFO     | __main__:process_query:182 -   BLEU: 0.0173
+2026-04-18 20:56:28 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:28 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0173
+2026-04-18 20:56:28 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9000
+2026-04-18 20:56:28 | INFO     | __main__:process_query:97 - 
+Processing: Explain the concept of human oversight in AI systems
+2026-04-18 20:56:36 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:36 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:36 | INFO     | __main__:process_query:179 - ✓ Processed in 7939.79ms
+2026-04-18 20:56:36 | INFO     | __main__:process_query:181 -   Token F1: 0.1503
+2026-04-18 20:56:36 | INFO     | __main__:process_query:182 -   BLEU: 0.0060
+2026-04-18 20:56:36 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:36 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0222
+2026-04-18 20:56:36 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9400
+2026-04-18 20:56:36 | INFO     | __main__:process_query:97 - 
+Processing: What is the significance of the CE marking for AI systems?
+2026-04-18 20:56:41 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:41 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:41 | INFO     | __main__:process_query:179 - ✓ Processed in 4404.78ms
+2026-04-18 20:56:41 | INFO     | __main__:process_query:181 -   Token F1: 0.1751
+2026-04-18 20:56:41 | INFO     | __main__:process_query:182 -   BLEU: 0.0169
+2026-04-18 20:56:41 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:41 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0226
+2026-04-18 20:56:41 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9400
+2026-04-18 20:56:41 | INFO     | __main__:process_query:97 - 
+Processing: What are the implications of classifying an AI system as high-risk?
+2026-04-18 20:56:48 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:48 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:48 | INFO     | __main__:process_query:179 - ✓ Processed in 7343.45ms
+2026-04-18 20:56:48 | INFO     | __main__:process_query:181 -   Token F1: 0.0907
+2026-04-18 20:56:48 | INFO     | __main__:process_query:182 -   BLEU: 0.0053
+2026-04-18 20:56:48 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:48 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0184
+2026-04-18 20:56:48 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9127
+2026-04-18 20:56:48 | INFO     | __main__:process_query:97 - 
+Processing: How might the prohibition of social scoring affect public authorities?
+2026-04-18 20:56:55 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:56:55 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:56:55 | INFO     | __main__:process_query:179 - ✓ Processed in 7300.80ms
+2026-04-18 20:56:55 | INFO     | __main__:process_query:181 -   Token F1: 0.1914
+2026-04-18 20:56:55 | INFO     | __main__:process_query:182 -   BLEU: 0.0115
+2026-04-18 20:56:55 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:56:55 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 20:56:55 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8800
+2026-04-18 20:56:55 | INFO     | __main__:process_query:97 - 
+Processing: What challenges might SMEs face in complying with the EU AI Act?
+2026-04-18 20:57:02 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:02 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:02 | INFO     | __main__:process_query:179 - ✓ Processed in 7150.25ms
+2026-04-18 20:57:02 | INFO     | __main__:process_query:181 -   Token F1: 0.1161
+2026-04-18 20:57:02 | INFO     | __main__:process_query:182 -   BLEU: 0.0011
+2026-04-18 20:57:02 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:02 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0200
+2026-04-18 20:57:02 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8900
+2026-04-18 20:57:02 | INFO     | __main__:process_query:97 - 
+Processing: How does the EU AI Act balance innovation with safety?
+2026-04-18 20:57:08 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:08 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:08 | INFO     | __main__:process_query:179 - ✓ Processed in 6081.75ms
+2026-04-18 20:57:08 | INFO     | __main__:process_query:181 -   Token F1: 0.1360
+2026-04-18 20:57:08 | INFO     | __main__:process_query:182 -   BLEU: 0.0120
+2026-04-18 20:57:08 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:08 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0171
+2026-04-18 20:57:08 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8200
+2026-04-18 20:57:08 | INFO     | __main__:process_query:97 - 
+Processing: What are the consequences of non-compliance with the EU AI Act?
+2026-04-18 20:57:15 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:15 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:15 | INFO     | __main__:process_query:179 - ✓ Processed in 6183.64ms
+2026-04-18 20:57:15 | INFO     | __main__:process_query:181 -   Token F1: 0.1000
+2026-04-18 20:57:15 | INFO     | __main__:process_query:182 -   BLEU: 0.0034
+2026-04-18 20:57:15 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:15 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0186
+2026-04-18 20:57:15 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8500
+2026-04-18 20:57:15 | INFO     | __main__:process_query:97 - 
+Processing: What is the difference between high-risk and limited-risk AI systems?
+2026-04-18 20:57:20 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:20 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:20 | INFO     | __main__:process_query:179 - ✓ Processed in 5207.47ms
+2026-04-18 20:57:20 | INFO     | __main__:process_query:181 -   Token F1: 0.1522
+2026-04-18 20:57:20 | INFO     | __main__:process_query:182 -   BLEU: 0.0040
+2026-04-18 20:57:20 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:20 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0196
+2026-04-18 20:57:20 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.9100
+2026-04-18 20:57:20 | INFO     | __main__:process_query:97 - 
+Processing: How do obligations differ between AI providers and deployers?
+2026-04-18 20:57:25 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:25 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:25 | INFO     | __main__:process_query:179 - ✓ Processed in 5274.30ms
+2026-04-18 20:57:25 | INFO     | __main__:process_query:181 -   Token F1: 0.1465
+2026-04-18 20:57:25 | INFO     | __main__:process_query:182 -   BLEU: 0.0036
+2026-04-18 20:57:25 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:25 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0245
+2026-04-18 20:57:25 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8067
+2026-04-18 20:57:25 | INFO     | __main__:process_query:97 - 
+Processing: Compare the EU AI Act's approach to AI regulation with a principles-based approach
+2026-04-18 20:57:34 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:34 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:34 | INFO     | __main__:process_query:179 - ✓ Processed in 8831.20ms
+2026-04-18 20:57:34 | INFO     | __main__:process_query:181 -   Token F1: 0.0909
+2026-04-18 20:57:34 | INFO     | __main__:process_query:182 -   BLEU: 0.0056
+2026-04-18 20:57:34 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:34 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 20:57:34 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.6355
+2026-04-18 20:57:34 | INFO     | __main__:process_query:97 - 
+Processing: What is the relationship between the EU AI Act and GDPR?
+2026-04-18 20:57:41 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:41 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:41 | INFO     | __main__:process_query:179 - ✓ Processed in 7399.18ms
+2026-04-18 20:57:41 | INFO     | __main__:process_query:181 -   Token F1: 0.1180
+2026-04-18 20:57:41 | INFO     | __main__:process_query:182 -   BLEU: 0.0066
+2026-04-18 20:57:41 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:41 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0159
+2026-04-18 20:57:41 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8800
+2026-04-18 20:57:41 | INFO     | __main__:process_query:97 - 
+Processing: How do requirements differ between general-purpose AI and specific-purpose AI systems?
+2026-04-18 20:57:49 | WARNING  | src.evaluation.metrics:calculate_rouge:273 - rouge-score not available, returning zeros
+2026-04-18 20:57:49 | WARNING  | src.evaluation.metrics:calculate_bertscore:310 - bert-score not available, returning zeros
+2026-04-18 20:57:49 | INFO     | __main__:process_query:179 - ✓ Processed in 7395.94ms
+2026-04-18 20:57:49 | INFO     | __main__:process_query:181 -   Token F1: 0.1014
+2026-04-18 20:57:49 | INFO     | __main__:process_query:182 -   BLEU: 0.0025
+2026-04-18 20:57:49 | INFO     | __main__:process_query:183 -   ROUGE-L: 0.0000
+2026-04-18 20:57:49 | INFO     | __main__:process_query:188 -   Avg Retrieval Score: 0.0242
+2026-04-18 20:57:49 | INFO     | __main__:process_query:189 -   Answer Relevance: 0.8800
+2026-04-18 20:57:49 | INFO     | __main__:generate_report:292 - ✓ Excel report generated: results/live_evaluation_20260418_205749.xlsx
+2026-04-18 20:57:49 | INFO     | __main__:generate_json_report:329 - ✓ JSON report generated: results/live_evaluation_20260418_205749.json
+2026-04-18 21:02:44 | INFO     | scripts.live_evaluation:__init__:33 - Initializing Live Evaluator...
+2026-04-18 21:02:46 | INFO     | src.retrieval.dense_retriever:__init__:50 - Initialized DenseRetriever with 561 chunks
+2026-04-18 21:02:46 | INFO     | src.retrieval.dense_retriever:__init__:51 - Index size: 561 vectors
+2026-04-18 21:02:46 | INFO     | src.retrieval.sparse_retriever:__init__:36 - Initializing SparseRetriever with 561 chunks
+2026-04-18 21:02:46 | INFO     | src.retrieval.sparse_retriever:__init__:37 - BM25 parameters: k1=1.5, b=0.75
+2026-04-18 21:02:46 | INFO     | src.retrieval.sparse_retriever:_build_index:54 - BM25 index built successfully
+2026-04-18 21:02:46 | INFO     | src.retrieval.hybrid_retriever:__init__:41 - Initialized HybridRetriever with fusion method: rrf
+2026-04-18 21:02:46 | INFO     | src.retrieval.hybrid_retriever:__init__:43 - RRF k parameter: 60
+2026-04-18 21:02:46 | INFO     | src.generation.prompt_manager:__init__:25 - Loaded 1 prompt templates
+2026-04-18 21:02:46 | INFO     | src.generation.multi_provider_llm:__init__:20 - Initializing Multi-Provider LLM Client
+2026-04-18 21:02:46 | INFO     | src.generation.multi_provider_llm:__init__:21 - Provider priority: openai → watsonx → ollama
+2026-04-18 21:02:46 | INFO     | src.generation.multi_provider_llm:_try_openai:37 - OpenAI API key not configured
+2026-04-18 21:02:47 | INFO     | src.generation.multi_provider_llm:_try_watsonx:74 - ✓ Using WatsonX AI: openai/gpt-oss-120b
+2026-04-18 21:02:47 | INFO     | scripts.live_evaluation:__init__:76 - ✓ LLM: watsonx (openai/gpt-oss-120b)
+2026-04-18 21:02:47 | INFO     | scripts.live_evaluation:__init__:77 - ✓ Loaded 561 chunks, 561 vectors
+2026-04-18 21:02:47 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the definition of an AI system according to the EU AI Act?
+2026-04-18 21:02:57 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 9676.06ms
+2026-04-18 21:02:57 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0221
+2026-04-18 21:02:57 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.4650
+2026-04-18 21:02:57 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What are the prohibited AI practices under the EU AI Act?
+2026-04-18 21:03:06 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 9025.63ms
+2026-04-18 21:03:06 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0201
+2026-04-18 21:03:06 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8733
+2026-04-18 21:03:06 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: Which AI systems are classified as high-risk?
+2026-04-18 21:03:14 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7773.11ms
+2026-04-18 21:03:14 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0239
+2026-04-18 21:03:14 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9400
+2026-04-18 21:03:14 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What are the transparency obligations for AI systems?
+2026-04-18 21:03:23 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 9113.47ms
+2026-04-18 21:03:23 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0259
+2026-04-18 21:03:23 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8650
+2026-04-18 21:03:23 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the role of the AI Office?
+2026-04-18 21:03:32 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 8727.32ms
+2026-04-18 21:03:32 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0186
+2026-04-18 21:03:32 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8971
+2026-04-18 21:03:32 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: Explain the risk-based approach of the EU AI Act
+2026-04-18 21:03:40 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 8580.46ms
+2026-04-18 21:03:40 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 21:03:40 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9400
+2026-04-18 21:03:40 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the purpose of conformity assessments for high-risk AI systems?
+2026-04-18 21:03:45 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 4473.41ms
+2026-04-18 21:03:45 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0195
+2026-04-18 21:03:45 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9182
+2026-04-18 21:03:45 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: How does the EU AI Act address fundamental rights?
+2026-04-18 21:03:50 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 4725.05ms
+2026-04-18 21:03:50 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0173
+2026-04-18 21:03:50 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8067
+2026-04-18 21:03:50 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: Explain the concept of human oversight in AI systems
+2026-04-18 21:03:57 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7659.56ms
+2026-04-18 21:03:57 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0222
+2026-04-18 21:03:57 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9067
+2026-04-18 21:03:57 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the significance of the CE marking for AI systems?
+2026-04-18 21:04:05 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7549.14ms
+2026-04-18 21:04:05 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0226
+2026-04-18 21:04:05 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9100
+2026-04-18 21:04:05 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What are the implications of classifying an AI system as high-risk?
+2026-04-18 21:04:13 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 8118.66ms
+2026-04-18 21:04:13 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0184
+2026-04-18 21:04:13 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9127
+2026-04-18 21:04:13 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: How might the prohibition of social scoring affect public authorities?
+2026-04-18 21:04:22 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 8996.02ms
+2026-04-18 21:04:22 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 21:04:22 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8800
+2026-04-18 21:04:22 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What challenges might SMEs face in complying with the EU AI Act?
+2026-04-18 21:04:30 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7728.86ms
+2026-04-18 21:04:30 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0200
+2026-04-18 21:04:30 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8900
+2026-04-18 21:04:30 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: How does the EU AI Act balance innovation with safety?
+2026-04-18 21:04:35 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 5290.41ms
+2026-04-18 21:04:35 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0171
+2026-04-18 21:04:35 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.7700
+2026-04-18 21:04:35 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What are the consequences of non-compliance with the EU AI Act?
+2026-04-18 21:04:44 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 9243.59ms
+2026-04-18 21:04:44 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0186
+2026-04-18 21:04:44 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9100
+2026-04-18 21:04:44 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the difference between high-risk and limited-risk AI systems?
+2026-04-18 21:04:51 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 6823.25ms
+2026-04-18 21:04:51 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0196
+2026-04-18 21:04:51 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9100
+2026-04-18 21:04:51 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: How do obligations differ between AI providers and deployers?
+2026-04-18 21:04:59 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7557.92ms
+2026-04-18 21:04:59 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0245
+2026-04-18 21:04:59 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8067
+2026-04-18 21:04:59 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: Compare the EU AI Act's approach to AI regulation with a principles-based approach
+2026-04-18 21:05:07 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 8666.95ms
+2026-04-18 21:05:07 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0215
+2026-04-18 21:05:07 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8582
+2026-04-18 21:05:07 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: What is the relationship between the EU AI Act and GDPR?
+2026-04-18 21:05:15 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7851.15ms
+2026-04-18 21:05:15 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0159
+2026-04-18 21:05:15 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.8800
+2026-04-18 21:05:15 | INFO     | scripts.live_evaluation:process_query:97 - 
+Processing: How do requirements differ between general-purpose AI and specific-purpose AI systems?
+2026-04-18 21:05:23 | INFO     | scripts.live_evaluation:process_query:179 - ✓ Processed in 7968.39ms
+2026-04-18 21:05:23 | INFO     | scripts.live_evaluation:process_query:188 -   Avg Retrieval Score: 0.0242
+2026-04-18 21:05:23 | INFO     | scripts.live_evaluation:process_query:189 -   Answer Relevance: 0.9100
+2026-04-18 21:05:23 | INFO     | scripts.live_evaluation:generate_report:292 - ✓ Excel report generated: results/live_evaluation_20260418_210523.xlsx
+2026-04-18 21:05:23 | INFO     | scripts.live_evaluation:generate_json_report:329 - ✓ JSON report generated: results/live_evaluation_20260418_210523.json

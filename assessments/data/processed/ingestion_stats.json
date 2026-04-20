@@ -1,0 +1,14 @@
+{
+  "total_documents": 461,
+  "total_chunks": 561,
+  "document_types": {
+    "recital": 287,
+    "annex": 18,
+    "article": 143,
+    "chapter": 13
+  },
+  "avg_chunk_size": 1081.9536541889483,
+  "chunks_by_type": {
+    "unknown": 561
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "test_queries": [
+    {
+      "query_id": "fact_001",
+      "query": "What is the definition of an AI system according to the EU AI Act?",
+      "query_type": "fact",
+      "expected_answer": "An AI system is a machine-based system designed to operate with varying levels of autonomy and that may exhibit adaptiveness after deployment and that, for explicit or implicit objectives, infers, from the input it receives, how to generate outputs such as predictions, content, recommendations, or decisions that can influence physical or virtual environments.",
+      "relevant_chunk_ids": [],
+      "expected_citations": ["Article 3(1)"],
+      "difficulty": "easy",
+      "category": "definitions"
+    },
+    {
+      "query_id": "fact_002",
+      "query": "What are the prohibited AI practices under the EU AI Act?",
+      "query_type": "fact",
+      "expected_answer": "Prohibited AI practices include: (a) deploying subliminal techniques to materially distort behavior; (b) exploiting vulnerabilities of specific groups; (c) social scoring by public authorities; (d) real-time remote biometric identification in publicly accessible spaces for law enforcement (with exceptions).",
+      "relevant_chunk_ids": [],
+      "expected_citations": ["Article 5"],
+      "difficulty": "medium",
+      "category": "prohibitions"
+    },
+    {
+      "query_id": "reasoning_001",
+      "query": "How does the EU AI Act balance innovation with safety?",
+      "query_type": "reasoning",
+      "expected_answer": "The EU AI Act balances innovation with safety through a risk-based approach: allowing low-risk AI with minimal requirements, imposing strict obligations on high-risk systems while permitting their use, prohibiting only the most dangerous practices, and providing regulatory sandboxes for testing innovative AI systems under supervision.",
+      "relevant_chunk_ids": [],
+      "expected_citations": ["Article 6", "Article 53", "Recital 5"],
+      "difficulty": "hard",
+      "category": "policy"
+    },
+    {
+      "query_id": "comparative_001",
+      "query": "What is the difference between high-risk and limited-risk AI systems?",
+      "query_type": "comparative",
+      "expected_answer": "High-risk AI systems (listed in Annex III) face strict requirements including risk management, data governance, documentation, transparency, human oversight, and conformity assessments. Limited-risk AI systems only need to meet transparency obligations, such as informing users they are interacting with AI.",
+      "relevant_chunk_ids": [],
+      "expected_citations": ["Article 6", "Article 52"],
+      "difficulty": "medium",
+      "category": "risk_classification"
+    }
+  ]
+}
